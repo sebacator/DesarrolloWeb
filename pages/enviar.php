@@ -377,73 +377,79 @@ $error = '';
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
-      </nav> 
+      </nav>
+       <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Felicidades</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            ¡Formulario enviado con exito!
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form">
+                                        <div class="form-group"> 
+                                        	<div class="container">
+    											<span style="padding-top: 10px;"></span>
+											  	<?php
+											  	// Mostrar contenido
+												if($enviado == 1 && $contenido == 1) {
+										    		echo '<pre>';
+										    		print_r($_POST);
+										    		echo '</pre>';
+										    		exit;
+										  		} else if(empty($nombre)) {
+										    		$error = 'Por favor, ingrese su nombre.';
+										  		} else if(empty($correo)) {
+										    		$error = 'Por favor, ingrese su correo electrónico.';
+										  		} else if(empty($rut)) {
+										    		$error = 'Por favor, ingrese su rut.';
+										  		} else if(!(is_numeric($rut))) {
+										    		$error = 'Por favor, ingrese solo numeros en el rut.';
+										  		}
+										  				// Vista de error
+										  		if(!empty($error)) {
+										  		?>
+										  		<div class="alert alert-info">
+										    		<i class="glyphicon glyphicon-info-sign"></i>
+										    		<?php echo $error; ?>
+										  		</div>
+										  		<a href="./" class="btn btn-warning">
+										    		<i class="glyphicon glyphicon-chevron-left"></i>
+										    		Volver
+										  		</a>
+												<!-- Vista de éxito -->
+												<?php
+										  		} else {
+										  		?>	
+										    		<div class="panels-wells">
+										      			<p>Bienvenido(a) <b><?php echo $nombre; ?></b> su rut es <b><?php echo $rut; ?></b></p>
+										      			<p>Tu correo electrónico es <b><?php echo $correo; ?></b>, </p>
+										   				<p>Tu sexo es: <b><?php echo ($sexo == 'm' ? 'Masculino' : ($sexo == 'f' ? 'Femenino' : 'Otros')); ?></b></p>
+										   				<p>Tu concejal es: <b><?php echo $concejal; ?></b></p>
+									      				<p>Tu alcalde es: <b><?php echo ($alcalde == 'sh' ? 'Sharp' : ($alcalde == 'dj' ? 'Dj mendez' : 'Castro')); ?></b></p>
+									    			</div>
+												<?php } ?>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
     </div>          
-  <div class="container">
-    <span style="padding-top: 10px;"></span>
-  <?php
-  // Mostrar contenido
-  if($enviado == 1 && $contenido == 1) {
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
-    exit;
-  } else if(empty($nombre)) {
-    $error = 'Por favor, ingrese su nombre.';
-  } else if(empty($correo)) {
-    $error = 'Por favor, ingrese su correo electrónico.';
-  } else if(empty($rut)) {
-    $error = 'Por favor, ingrese su rut.';
-  } else if(!(is_numeric($rut))) {
-    $error = 'Por favor, ingrese solo numeros en el rut.';
-  }
-
-// Vista de error
-  if(!empty($error)) {
-  ?>
-  <div class="alert alert-info">
-    <i class="glyphicon glyphicon-info-sign"></i>
-    <?php echo $error; ?>
-  </div>
-  <a href="./" class="btn btn-warning">
-    <i class="glyphicon glyphicon-chevron-left"></i>
-    Volver
-  </a>
-  <?php
-// Vista de éxito
-  } else {
-  // Subir imagen
-  //move_uploaded_file($foto['tmp_name'], $foto_subida);
-?>
-  <h3>¡Formulario enviado con exito!</h3>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Datos</h3>
-    </div>
-    <div class="panels-wells">
-      <p>Bienvenido(a) <b><?php echo $nombre; ?></b> su rut es <b><?php echo $rut; ?></b>
-      <p>Tu correo electrónico es <b><?php echo $correo; ?></b>, </p>
-      <p>
-        Tu sexo es: <b><?php echo ($sexo == 'm' ? 'Masculino' : ($sexo == 'f' ? 'Femenino' : 'Otros')); ?></b>
-      </p>
-      <p>
-        Tu concejal es: <b><?php echo $concejal; ?></b>
-      </p>
-      <p>
-        Tu alcalde es: <b><?php echo ($alcalde == 'sh' ? 'Sharp' : ($alcalde == 'dj' ? 'Dj mendez' : 'Castro')); ?></b>
-      </p>
-    </div>
-    <div class="panel-footer">
-      <div class="text-right">
-        <a href="./" class="btn btn-primary">
-          <i class="glyphicon glyphicon-chevron-left"></i>
-          Volver
-        </a>
-      </div>
-    </div>
-  </div>
-<?php } ?>
-</div>
+  	
     <script src="../vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
